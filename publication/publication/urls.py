@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path 
 from . import views
+#from views import Upload 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,7 +25,7 @@ urlpatterns = [
     path('tech/', views.tech, name="tech"),
     path('science/', views.science, name="science"),
     path('general/', views.general, name="general"),
-    path('upload/', views.upload, name="upload"),
+    path('upload/',views.Upload.as_view(), name="upload"),
     
     
 ]

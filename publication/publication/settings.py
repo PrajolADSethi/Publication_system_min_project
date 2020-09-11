@@ -69,15 +69,22 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'publication.wsgi.application'
-
+import pymysql
+pymysql.version_info = (1, 4, 6, 'final', 0)  # change mysqlclient version
+pymysql.install_as_MySQLdb()
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 DATABASES = {
     'default': {
+        'NAME': 'ACTIVE',
         'ENGINE': 'django.db.backends.mysql',
+        'USER':'root',
+        'PASSWORD':'iamjolly20',
+        'HOST':'127.0.0.1',
+        'PORT':'3306',
         'OPTIONS': {
-          
+            'autocommit':True,
         },
     }
 }

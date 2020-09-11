@@ -1,14 +1,54 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.views.generic import View
+from django.db import connection
+
 
 def home(request):
     return render (request, 'index.html')
 def covid(request):
     return render (request, 'covid.html')
+#    with connection.cursor() as cursor:
+#    cursor.execute("Select * from ARTICLE where AREA_OF_RESEARCH='Covid';",
+#    records1 = cursor.fetchall()              
+#    for row in records1:
+#    doi = row["doi"]
+#    title = row["title"]
+#    link = row["link"]
+##    purchase_date = row["Purchase_date"]
+#    print(doi,title,link)               
+                   
 def tech(request):
     return render (request, 'tech.html')
+#     with connection.cursor() as cursor:
+#    cursor.execute("Select * from ARTICLE where AREA_OF_RESEARCH='Technology';",                   
 def science(request):
     return render (request, 'science.html')
+#     with connection.cursor() as cursor:
+#    cursor.execute("Select * from ARTICLE where AREA_OF_RESEARCH='Science';",               
 def general(request):
     return render (request, 'general.html')
-def upload(request):
-    return render (request, 'upload.html')
+#     with connection.cursor() as cursor:
+#    cursor.execute("Select * from ARTICLE where AREA_OF_RESEARCH='General';",               
+
+class Upload(View):
+    def get(self, request, *args, **kwargs):
+
+        return render(request, 'upload.html')
+
+    def post(self, request, *args, **kwargs):
+            form = request.POST
+            doi= form.get('doi')
+            fname= form.get('firstname')
+            lname= form.get('lastname')
+            email= form.get('email')
+            title= form.get('title')
+            research= form.get('research')
+            jname = form.get('jname')
+            volume = form.get('volume')
+            issue = form.get('issue')
+            link = form.get('link') 
+            
+            with connection.cursor() as cursor:
+                cursor.execute("INSERT into NEW_ENTRIES values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);",[doi,fname,lname,email,title,research,jname,volume,issue,link])
+                print('success!!')
+            return redirect("home")
