@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+ <!-- Default form register -->
+    
+    <link href="{% static 'css/upload.css' %}" rel="stylesheet">
+    <div class="container">
+<div class="row">
+  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+    <div class="card card-signin my-5">
+      <div class="card-body"> 
+<!--    <section  class="form" >-->
+<form class="text-center border border-light p-5" action="{% url 'upload'%}" method="post">
+
+    <p class="h4 mb-4">Article Upload</p>
+
+    <div class="form-row mb-4">
+       <!--   DOI    -->
+          <input type="text" id="defaultRegisterFormDOI" class="form-control mb-4" placeholder="DOI">
+        <div class="col">
+           
+            <!-- First name -->
+            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
+        </div>
+        <div class="col">
+            <!-- Last name -->
+            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
+        </div>
+    </div>
+   <!-- E-mail -->
+    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+    <!-- Title -->
+   <input type="text" id="defaultRegisterFormTitle" class="form-control mb-4" placeholder="Article Title">
+   
+  
+   <!--  Area of research  -->
+   <input type="text" id="defaultRegisterFormresearch" class="form-control mb-4" placeholder="Area of research">
+  
+  <!--  Journal name  -->
+   <input type="text" id="defaultRegisterFormjournal" class="form-control mb-4" placeholder="Journal Name">
+  <!--  Volume  -->
+   <input type="text" id="defaultRegisterFormvolume" class="form-control mb-4" placeholder="Volume"> 
+  <!--  issue  -->
+   <input type="text" id="defaultRegisterFormissue" class="form-control mb-4" placeholder="Issue">
+  <!--  Area of research  -->
+   <input type="url" id="defaultRegisterFormlink" class="form-control mb-4" placeholder="Link">
+  <!-- Password -->
+<!--     <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+        At least 8 characters and 1 digit
+    </small> -->
+
+    <!-- Phone number -->
+<!--     <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+    <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
+        Optional - for two step authentication
+    </small> -->
+
+    <!-- Newsletter -->
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
+        <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
+    </div>
+
+    <!-- Sign up button -->
+    <button class="btn btn-info my-4 btn-block" type="submit">Upload</button>
+
+    <!-- Social register -->
+<!--    <p>or share:</p>-->
+
+<!--     <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a> -->
+<!--
+    <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+    <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+-->
+
+<!--    <hr>-->
+
+    <!-- Terms of service -->
+    <p>By clicking
+        <em>Upload</em> you agree to our
+        <a href="" target="_blank">terms of service</a>
+
+</form>
+        </div>
+         </div>
+       </div>
+     </div>
+         </div>
+
+{% endblock %}
