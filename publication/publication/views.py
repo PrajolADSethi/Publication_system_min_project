@@ -6,16 +6,37 @@ from django.db import connection
 def home(request):
     return render (request, 'index.html')
 def covid(request):
-    return render (request, 'covid.html')
-#    with connection.cursor() as cursor:
-#    cursor.execute("Select * from ARTICLE where AREA_OF_RESEARCH='Covid';",
-#    records1 = cursor.fetchall()              
-#    for row in records1:
-#    doi = row["doi"]
-#    title = row["title"]
-#    link = row["link"]
-##    purchase_date = row["Purchase_date"]
-#    print(doi,title,link)               
+   
+    with connection.cursor() as cursor:
+#        cursor = connection.cursor()
+        cursor.execute("Select * from ARTICLE where AREA_OF_RESEARCH='Covid';")
+        records1 = cursor.fetchall() 
+#    print(records1[1][2])
+#    print(records1[0])
+    context={
+        'value':records1[0][2], 
+        
+    }
+#    
+#    for context in records1:
+#        for i in range:
+#            context={
+#                
+#               'value':records1[i]
+#                i =+ 1
+#            }  
+#            
+#     for i in records1:
+#        
+#        print(records1[i])
+#        
+#            for j in d[i]:
+#                print j   
+        
+        
+          
+        
+    return render (request, 'covid.html',context)
                    
 def tech(request):
     return render (request, 'tech.html')
