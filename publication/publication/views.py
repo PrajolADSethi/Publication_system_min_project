@@ -1,42 +1,31 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.db import connection
+import pandas as pd
+import mysql.connector
 
 
 def home(request):
     return render (request, 'index.html')
 def covid(request):
+    
    
-    with connection.cursor() as cursor:
+#    with connection.cursor() as cursor:
 #        cursor = connection.cursor()
-        cursor.execute("Select * from ARTICLE where AREA_OF_RESEARCH='Covid';")
-        records1 = cursor.fetchall() 
-#    print(records1[1][2])
-#    print(records1[0])
-    context={
-        'value':records1[0][2], 
-        
-    }
-#    
-#    for context in records1:
-#        for i in range:
-#            context={
-#                
-#               'value':records1[i]
-#                i =+ 1
-#            }  
-#            
-#     for i in records1:
-#        
-#        print(records1[i])
-#        
-#            for j in d[i]:
-#                print j   
-        
-        
-          
-        
-    return render (request, 'covid.html',context)
+            connection = mysql.connector.connect(host='localhost',database='ACTIVE',
+                                             user='root',
+                                             password='iamjolly20')
+    
+            cur = connection.cursor()
+            cursor.execute("Select * from ARTICLE where AREA_OF_RESEARCH='Covid';")
+            data1 = cur.fetchall()
+            df=pd.DataFrame(data1,columns=["DOI","AUTHOR_NAME","TITLE","LINK"])
+            print(df)
+            html=df.to_html()
+            text_file = open("publicationApp\templates\covd.html", "w")
+            text_file.write(html)
+            text_file.close()
+            return render (request, 'covid.html')
                    
 def tech(request):
     return render (request, 'tech.html')
