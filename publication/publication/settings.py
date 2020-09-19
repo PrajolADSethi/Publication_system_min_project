@@ -77,11 +77,11 @@ pymysql.install_as_MySQLdb()
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 DATABASES = {
     'default': {
-        'NAME': 'ACTIVE',
+        'NAME': 'try1',
         'ENGINE': 'django.db.backends.mysql',
         'USER':'root',
-        'PASSWORD':'iamjolly20',
-        'HOST':'127.0.0.1',
+        'PASSWORD':'qwerty',
+        'HOST':'localhost',
         'PORT':'3306',
         'OPTIONS': {
             'autocommit':True,

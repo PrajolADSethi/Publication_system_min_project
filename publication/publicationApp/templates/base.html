@@ -6,14 +6,14 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Publication Management System</title>
+  <title>Publish Hut</title>
    
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
   <link href="" rel="icon">
-  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <link href="{% static 'img/logo.jpeg' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -41,8 +41,8 @@
  <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-
-      <h1 class="logo mr-auto"><a href="{% url 'home' %}">Publication System</a></h1>
+        <img src="{% static 'img/logo.jpeg' %}" width="100" height="100" class="d-inline-block align-top" href="{% url 'home' %}" alt="">
+<!--      <h1 class="logo mr-auto" ><a href="{% url 'home' %}">Publish Hut</a></h1>-->
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt=""></a>-->
 
@@ -60,7 +60,7 @@
               <li class="drop-down"><a href="#">Read</a>
                 <ul>
                   <li><a href="{% url 'covid' %}">Covid</a></li>
-                  <li><a href="{% url 'tech' %}">Technology</a></li>
+                  <li><a href="{% url 'tech' %}">Medical</a></li>
                   <li><a href="{% url 'science' %}">Science</a></li>
                   <li><a href="{% url 'general' %}">General</a></li>
 <!--                  <li><a href="#">Deep Drop Down 5</a></li>-->
@@ -121,7 +121,7 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Project Link</h4>
             <div class="social-links mt-3">
-              <a href="#" class="github"><i class="bx bxl-github"></i></a>
+              <a href="https://github.com/PrajolADSethi/Publication_system_min_project" class="github"><i class="bx bxl-github"></i></a>
 <!--
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>

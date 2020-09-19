@@ -10,35 +10,70 @@ def home(request):
 def covid(request):
     
    
-#    with connection.cursor() as cursor:
-#        cursor = connection.cursor()
-            connection = mysql.connector.connect(host='localhost',database='ACTIVE',
+
+            connection = mysql.connector.connect(host='localhost' ,database='try1',
                                              user='root',
-                                             password='iamjolly20')
+                                             password='qwerty')
     
             cur = connection.cursor()
-            cursor.execute("Select * from ARTICLE where AREA_OF_RESEARCH='Covid';")
+            cur.execute("Select * from ARTICLE where AREA_OF_RESEARCH='Covid';")
             data1 = cur.fetchall()
-            df=pd.DataFrame(data1,columns=["DOI","AUTHOR_NAME","TITLE","LINK"])
+            df=pd.DataFrame(data1,columns=["DOI","AUTHOR_NAME","TITLE","DATE_OF_PUBLICATION","JOURNAL_ID","LINK","AREA_OF_RESEARCH"])
             print(df)
             html=df.to_html()
-            text_file = open("publicationApp\templates\covd.html", "w")
+            text_file = open("publicationApp/templates/covid.html", "w", encoding="utf-8")
             text_file.write(html)
             text_file.close()
-            return render (request, 'covid.html')
+            return render (request,'covid.html')
                    
 def tech(request):
-    return render (request, 'tech.html')
-#     with connection.cursor() as cursor:
-#    cursor.execute("Select * from ARTICLE where AREA_OF_RESEARCH='Technology';",                   
+            connection = mysql.connector.connect(host='localhost' ,database='try1',
+                                             user='root',
+                                             password='qwerty')
+    
+            cur = connection.cursor()
+            cur.execute("Select * from ARTICLE where AREA_OF_RESEARCH='Medical';")
+            data1 = cur.fetchall()
+            df=pd.DataFrame(data1,columns=["DOI","AUTHOR_NAME","TITLE","DATE_OF_PUBLICATION","JOURNAL_ID","LINK","AREA_OF_RESEARCH"])
+            print(df)
+            html=df.to_html()
+            text_file = open("publicationApp/templates/tech.html", "w", encoding="utf-8")
+            text_file.write(html)
+            text_file.close()
+            return render (request,'tech.html')                 
 def science(request):
-    return render (request, 'science.html')
-#     with connection.cursor() as cursor:
-#    cursor.execute("Select * from ARTICLE where AREA_OF_RESEARCH='Science';",               
+    
+            connection = mysql.connector.connect(host='localhost' ,database='try1',
+                                             user='root',
+                                             password='qwerty')
+    
+            cur = connection.cursor()
+            cur.execute(" Select * from ARTICLE where AREA_OF_RESEARCH='Signaling' OR  AREA_OF_RESEARCH='Robotics';")
+            data1 = cur.fetchall()
+            df=pd.DataFrame(data1,columns=["DOI","AUTHOR_NAME","TITLE","DATE_OF_PUBLICATION","JOURNAL_ID","LINK","AREA_OF_RESEARCH"])
+            print(df)
+            html=df.to_html()
+            text_file = open("publicationApp/templates/science.html", "w", encoding="utf-8")
+            text_file.write(html)
+            text_file.close()
+            return render (request,'science.html')
+             
 def general(request):
-    return render (request, 'general.html')
-#     with connection.cursor() as cursor:
-#    cursor.execute("Select * from ARTICLE where AREA_OF_RESEARCH='General';",               
+            connection = mysql.connector.connect(host='localhost' ,database='try1',
+                                             user='root',
+                                             password='qwerty')
+    
+            cur = connection.cursor()
+            cur.execute("Select * from ARTICLE where AREA_OF_RESEARCH='General';")
+            data1 = cur.fetchall()
+            df=pd.DataFrame(data1,columns=["DOI","AUTHOR_NAME","TITLE","DATE_OF_PUBLICATION","JOURNAL_ID","LINK","AREA_OF_RESEARCH"])
+            print(df)
+            html=df.to_html()
+            text_file = open("publicationApp/templates/general.html", "w", encoding="utf-8")
+            text_file.write(html)
+            text_file.close()
+            return render (request,'general.html')
+           
 
 class Upload(View):
     def get(self, request, *args, **kwargs):
@@ -57,6 +92,7 @@ class Upload(View):
             volume = form.get('volume')
             issue = form.get('issue')
             link = form.get('link') 
+          
             
             with connection.cursor() as cursor:
                 cursor.execute("INSERT into NEW_ENTRIES values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);",[doi,fname,lname,email,title,research,jname,volume,issue,link])
